@@ -1,0 +1,50 @@
+<!-- <div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by title"
+          [(ngModel)]="Name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div> -->
+<div class="col-md-6">
+<h4>Tutorials List</h4>
+<ul>
+    <li class="m-5"
+    *ngFor="let tutorial of tutorials; let i=index"
+    [class.active]="i == currentIndex"
+    >
+    <a (click)="retrieveTutorial(tutorial.id)">{{tutorial.Name}}</a>
+    <button type="button" (click)="deleteTutorial(tutorial.id)" class="btn-sm btn-danger">Delete</button>
+    <button type="button" [routerLink]="['/update',tutorial.id]" class="btn-sm btn-primary">update</button>
+    </li>
+</ul>
+</div>
+
+<div *ngIf="tutorial">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+
+        </thead>
+    </table>
+    <tr>
+        <td>{{tutorial.Name}}</td>
+        <td>{{tutorial.age}}</td>
+    </tr>
+
+</div>
